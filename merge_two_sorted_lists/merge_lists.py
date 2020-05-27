@@ -19,10 +19,7 @@ class Solution:
                 old_next = curr_l2.next
                 curr_l2.next = curr_l1
                 curr_l2 = old_next
-        if curr_l1 == None:
-            return l2
-        else:
-            return l1
+        return l1
 
 
 # tests
