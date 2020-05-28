@@ -9,17 +9,30 @@ class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         curr_l1 = l1
         curr_l2 = l2
+        merged_list = ListNode(0)
+        currr_ml = merged_list
 
         while curr_l1 != None and curr_l2 != None:
             if curr_l1.val <= curr_l2.val:
-                old_next = curr_l1.next
-                curr_l1.next = curr_l2
-                curr_l1 = old_next
+                currr_ml.next = ListNode(curr_l1.val)
+                curr_l1 = curr_l1.next
             else:
-                old_next = curr_l2.next
-                curr_l2.next = curr_l1
-                curr_l2 = old_next
-        return l1
+                currr_ml.next = ListNode(curr_l2.val)
+                curr_l2 = curr_l2.next
+            currr_ml = currr_ml.next
+
+        if curr_l1 != None:
+            while curr_l1 != None:
+                currr_ml.next = curr_l1
+                curr_l1 = curr_l1.next
+                currr_ml = currr_ml.next
+        elif curr_l2 != None:
+            while curr_l2 != None:
+                currr_ml.next = curr_l2
+                curr_l2 = curr_l2.next
+                currr_ml = currr_ml.next
+
+        return merged_list.next
 
 
 # tests
